@@ -1,6 +1,7 @@
 <!DOCTYPE html>
+
 <head>
-    <title>Game</title>
+    <title>Game of life</title>
     <meta charset="utf8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -8,18 +9,22 @@
         canvas {
             display: block;
             margin: 0 auto;
-           }
+        }
+
         div {
             display: inline-block;
         }
+
         h1 {
             padding: 20px;
             text-align: center;
         }
+
         body {
             font-family: 'Noto Sans', sans-serif !important;
         }
-        #creator{
+
+        #creator {
             background-color: aqua;
             width: 100px;
             height: 50px;
@@ -27,7 +32,8 @@
             margin-left: 600px;
         }
     </style>
-    </head>
+</head>
+
 <body>
     <table class="table table-hover">
         <thead>
@@ -47,7 +53,8 @@
             <tr>
                 <th scope="row">1</th>
                 <td scope="row" style="background-color:green;"></td>
-                <td>Կանաչը խոտն է, որը բազմանում է 10 ցիկլը մեկ, մահանում է երբ նրան ուտում է խոտակերը կամ նրա փոխարեն աճում է
+                <td>Կանաչը խոտն է, որը բազմանում է 10 ցիկլը մեկ, մահանում է երբ նրան ուտում է խոտակերը կամ նրա փոխարեն
+                    աճում է
                     ծաղիկ։</td>
             </tr>
             <tr>
@@ -57,24 +64,26 @@
                     երբ նրան ուտում է գիշատիչը:</td>
             </tr>
             <tr>
-                    <th scope="row">3</th>
-                    <td scope="row" style="background-color:red;"></td>
-                    <td>Կարմիրը գիշատիչն է, որը ուտում է խոտակերներին և ծաղիկներին, բազմանում է երբ ուտում է 4 հատ ծաղիկ կամ խոտակեր:</td>
-                </tr>
-                <tr>
-                        <th scope="row">4</th>
-                        <td scope="row" style="background-color:pink;"></td>
-                        <td>Վարդագույնը ծաղիկն է, որը բազմանում է խոտի վրա 90 ցիկլ հետո, մահանում է երբ ուտում է գիշատիչը:</td>
-                    </tr>
-                    <tr>
-                            <th scope="row">5</th>
-                            <td scope="row" style="background-color:aqua;"></td>
-                            <td>Արարիչն է, որի վրա սեղմելուց ստեղծվում են յուրաքանչյուր կերպարից հինգական։</td>
-                        </tr>
+                <th scope="row">3</th>
+                <td scope="row" style="background-color:red;"></td>
+                <td>Կարմիրը գիշատիչն է, որը ուտում է խոտակերներին և ծաղիկներին, բազմանում է երբ ուտում է 4 հատ ծաղիկ կամ
+                    խոտակեր:</td>
+            </tr>
+            <tr>
+                <th scope="row">4</th>
+                <td scope="row" style="background-color:pink;"></td>
+                <td>Վարդագույնը ծաղիկն է, որը բազմանում է խոտի վրա 90 ցիկլ հետո, մահանում է երբ ուտում է գիշատիչը:</td>
+            </tr>
+            <tr>
+                <th scope="row">5</th>
+                <td scope="row" style="background-color:aqua;"></td>
+                <td>Արարիչն է, որի վրա սեղմելուց ստեղծվում են յուրաքանչյուր կերպարից հինգական։</td>
+            </tr>
         </tbody>
     </table>
-    <button id = 'creator'>Creator</button>
+    <button id='creator'>Creator</button>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.js"></script>
+    <script src="creature.js"></script>
     <script src="grass.js"></script>
     <script src="grass_eater.js"></script>
     <script src="predator.js"></script>

@@ -1,47 +1,7 @@
-class Predator {
+class Predator extends Creature {
     constructor(x, y) {
-        this.x = x;
-        this.y = y;
+        super(x, y);
         this.energy = 30;
-        this.directions = [
-            [this.x - 1, this.y - 1],
-            [this.x, this.y - 1],
-            [this.x + 1, this.y - 1],
-            [this.x - 1, this.y],
-            [this.x + 1, this.y],
-            [this.x - 1, this.y + 1],
-            [this.x, this.y + 1],
-            [this.x + 1, this.y + 1]
-        ];
-    }
-    chooseCell(char) {
-        let arr = [];
-
-        for (let index = 0; index < this.directions.length; index++) {
-            let x = this.directions[index][0];
-            let y = this.directions[index][1];
-
-            if (x >= 0 && y >= 0 && x < matrix[0].length && y < matrix.length) {
-                if (matrix[y][x] == char) {
-                    arr.push(this.directions[index])
-                }
-            }
-
-        }
-
-        return arr;
-    }
-    getNewDirections(){
-        this.directions = [
-            [this.x - 1, this.y - 1],
-            [this.x, this.y - 1],
-            [this.x + 1, this.y - 1],
-            [this.x - 1, this.y],
-            [this.x + 1, this.y],
-            [this.x - 1, this.y + 1],
-            [this.x, this.y + 1],
-            [this.x + 1, this.y + 1]
-        ];
     }
     mul() {
         let newCell = random(this.chooseCell(0));
@@ -54,6 +14,19 @@ class Predator {
             this.energy = 0;
         }
     }
+    getNewDirections() {
+        this.directions = [
+            [this.x - 1, this.y - 1],
+            [this.x, this.y - 1],
+            [this.x + 1, this.y - 1],
+            [this.x - 1, this.y],
+            [this.x + 1, this.y],
+            [this.x - 1, this.y + 1],
+            [this.x, this.y + 1],
+            [this.x + 1, this.y + 1]
+        ];
+    }
+
     die() {
         matrix[this.y][this.x] = 0;
         for (let index = 0; index < predatorArr.length; index++) {
@@ -80,8 +53,8 @@ class Predator {
                     grassEaterArr.splice(index, 1)
                 }
             }
-            
-            if(this.energy > 40){
+
+            if (this.energy > 40) {
                 this.mul()
             }
         }
@@ -96,20 +69,20 @@ class Predator {
             this.y = y;
             this.x = x;
 
-                for (let index = 0; index < flowerArr.length; index++) {
+            for (let index = 0; index < flowerArr.length; index++) {
                 if (flowerArr[index].x == x && flowerArr[index].y == y) {
                     flowerArr.splice(index, 1)
                 }
             }
 
-            if(this.energy > 40){
+            if (this.energy > 40) {
                 this.mul()
             }
         }
 
         else { this.move() }
     }
-    move(){
+    move() {
         this.energy--;
         let newCell = random(this.chooseCell(0));
         if (newCell) {
@@ -121,10 +94,10 @@ class Predator {
             this.y = y;
             this.x = x;
         }
-        if (newCell && this.energy < 0){
+        if (newCell && this.energy < 0) {
             this.die();
         }
-        if (this.energy < 0){
+        if (this.energy < 0) {
             this.die();
         }
     }

@@ -7,61 +7,61 @@ let flowerArr = [];
 let matrixSize = 80;
 
 function setup() {
-    matrixGenerator(80, 800, 50, 50,10);
+    matrixGenerator(80, 800, 50, 50, 10);
     createCanvas(matrix[0].length * side, matrix.length * side);
     background('grey');
     frameRate(3);
 
     noStroke();
 
-    function matrixGenerator(matrixSize, grassCount, grassEaterCount, predatorCount,flowerCount) {
+    function matrixGenerator(matrixSize, grassCount, grassEaterCount, predatorCount, flowerCount) {
         for (let index = 0; index < matrixSize; index++) {
             matrix[index] = [];
             for (let i = 0; i < matrixSize; i++) {
                 matrix[index][i] = 0;
             }
         }
-        function action(count,number){
+        function action(count, number) {
             for (let index = 0; index < count; index++) {
                 let x = Math.floor(random(0, matrixSize));
                 let y = Math.floor(random(0, matrixSize));
                 matrix[y][x] = number;
             }
         }
-        action(grassCount,1);
-        action(grassEaterCount,2);
-        action(predatorCount,3);
-        action(flowerCount,4);
-    
+        action(grassCount, 1);
+        action(grassEaterCount, 2);
+        action(predatorCount, 3);
+        action(flowerCount, 4);
+
     }
     document.getElementById("creator").addEventListener("click", creator);
-function creator(){
-    for(let i = 0; i < 5; i++){
-    let x = Math.floor(random(0, matrixSize));
-    let y = Math.floor(random(0, matrixSize));
-    matrix[y][x] = 1;
-    let grass = new Grass(x, y);
-    grassArr.push(grass);
-    
-     x = Math.floor(random(0, matrixSize));
-     y = Math.floor(random(0, matrixSize));
-     matrix[y][x] = 2;
-     let grassEater = new GrassEater(x, y);
-     grassEaterArr.push(grassEater);
+    function creator() {
+        for (let i = 0; i < 5; i++) {
+            let x = Math.floor(random(0, matrixSize));
+            let y = Math.floor(random(0, matrixSize));
+            matrix[y][x] = 1;
+            let grass = new Grass(x, y);
+            grassArr.push(grass);
 
-     x = Math.floor(random(0, matrixSize));
-     y = Math.floor(random(0, matrixSize));
-     matrix[y][x] = 3;
-     let predator = new Predator(x, y);
-     predatorArr.push(predator);
+            x = Math.floor(random(0, matrixSize));
+            y = Math.floor(random(0, matrixSize));
+            matrix[y][x] = 2;
+            let grassEater = new GrassEater(x, y);
+            grassEaterArr.push(grassEater);
 
-     x = Math.floor(random(0, matrixSize));
-     y = Math.floor(random(0, matrixSize));
-     matrix[y][x] = 4;
-     let flower = new Flower(x, y);
-    flowerArr.push(flower);
+            x = Math.floor(random(0, matrixSize));
+            y = Math.floor(random(0, matrixSize));
+            matrix[y][x] = 3;
+            let predator = new Predator(x, y);
+            predatorArr.push(predator);
+
+            x = Math.floor(random(0, matrixSize));
+            y = Math.floor(random(0, matrixSize));
+            matrix[y][x] = 4;
+            let flower = new Flower(x, y);
+            flowerArr.push(flower);
+        }
     }
-}
 
     for (let y = 0; y < matrix.length; y++) {
         for (let x = 0; x < matrix[y].length; x++) {
@@ -122,11 +122,4 @@ function draw() {
         flowerArr[index].mul();
     }
 
-    //creator
-    /*fill('aqua');
-    ellipse(400,400,40,40);
-    fill('maroon');
-    ellipse(391,391,10,10);
-    ellipse(408,391,10,10);
-    rect(390,401,20,6);*/
 }

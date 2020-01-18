@@ -1,47 +1,7 @@
-class GrassEater {
+class GrassEater extends Creature {
     constructor(x, y) {
-        this.x = x;
-        this.y = y;
+        super(x, y);
         this.energy = 30;
-        this.directions = [
-            [this.x - 1, this.y - 1],
-            [this.x, this.y - 1],
-            [this.x + 1, this.y - 1],
-            [this.x - 1, this.y],
-            [this.x + 1, this.y],
-            [this.x - 1, this.y + 1],
-            [this.x, this.y + 1],
-            [this.x + 1, this.y + 1]
-        ];
-    }
-    chooseCell(char) {
-        let arr = [];
-
-        for (let index = 0; index < this.directions.length; index++) {
-            let x = this.directions[index][0];
-            let y = this.directions[index][1];
-
-            if (x >= 0 && y >= 0 && x < matrix[0].length && y < matrix.length) {
-                if (matrix[y][x] == char) {
-                    arr.push(this.directions[index])
-                }
-            }
-
-        }
-
-        return arr;
-    }
-    getNewDirections(){
-        this.directions = [
-            [this.x - 1, this.y - 1],
-            [this.x, this.y - 1],
-            [this.x + 1, this.y - 1],
-            [this.x - 1, this.y],
-            [this.x + 1, this.y],
-            [this.x - 1, this.y + 1],
-            [this.x, this.y + 1],
-            [this.x + 1, this.y + 1]
-        ];
     }
     mul() {
         let newCell = random(this.chooseCell(0));
@@ -54,6 +14,19 @@ class GrassEater {
             this.energy = 0;
         }
     }
+    getNewDirections() {
+        this.directions = [
+            [this.x - 1, this.y - 1],
+            [this.x, this.y - 1],
+            [this.x + 1, this.y - 1],
+            [this.x - 1, this.y],
+            [this.x + 1, this.y],
+            [this.x - 1, this.y + 1],
+            [this.x, this.y + 1],
+            [this.x + 1, this.y + 1]
+        ];
+    }
+
     die() {
         matrix[this.y][this.x] = 0;
         for (let index = 0; index < grassEaterArr.length; index++) {
@@ -82,13 +55,13 @@ class GrassEater {
                 }
             }
 
-            if(this.energy > 30){
+            if (this.energy > 30) {
                 this.mul()
             }
         }
         else { this.move() }
     }
-    move(){
+    move() {
         this.energy--;
         let newCell = random(this.chooseCell(0));
         if (newCell) {
@@ -100,10 +73,10 @@ class GrassEater {
             this.y = y;
             this.x = x;
         }
-        if (newCell && this.energy < 0){
+        if (newCell && this.energy < 0) {
             this.die();
         }
-        if (this.energy < 0){
+        if (this.energy < 0) {
             this.die();
         }
     }
