@@ -1,4 +1,4 @@
-class Predator extends Creature {
+module.exports = class Predator extends Creature {
     constructor(x, y) {
         super(x, y);
         this.energy = 30;

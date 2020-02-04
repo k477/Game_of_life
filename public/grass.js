@@ -1,4 +1,4 @@
-class Grass extends Creature {
+module.exports = class Grass extends Creature {
     constructor(x, y) {
         super(x, y);
         this.life = 0;

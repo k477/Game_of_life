@@ -1,4 +1,4 @@
-class Flower extends Creature {
+module.exports = class Flower extends Creature {
     constructor(x, y) {
         super(x, y);
         this.life = 0;

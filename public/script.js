@@ -1,9 +1,13 @@
+import { Socket } from "dgram";
+
 let matrix = [];
 let side = 10;
 let grassArr = [];
 let grassEaterArr = [];
 let predatorArr = [];
 let flowerArr = [];
+let mowerArr = [];
+let girlArr = [];
 let matrixSize = 80;
 
 function setup() {
@@ -34,6 +38,7 @@ function setup() {
         action(flowerCount, 4);
 
     }
+
     document.getElementById("creator").addEventListener("click", creator);
     function creator() {
         for (let i = 0; i < 5; i++) {
@@ -109,17 +114,35 @@ function draw() {
             ellipse(x * side, y * side, side, side);
         }
     }
-    for (let index = 0; index < grassArr.length; index++) {
-        grassArr[index].mul();
+
+    //tanel server
+    function actionFromServer(){
+        for (let index = 0; index < grassArr.length; index++) {
+            grassArr[index].mul();
+        }
+        for (let index = 0; index < grassEaterArr.length; index++) {
+            grassEaterArr[index].eat();
+        }
+        for (let index = 0; index < predatorArr.length; index++) {
+            predatorArr[index].eat();
+        }
+        for (let index = 0; index < flowerArr.length; index++) {
+            flowerArr[index].mul();
+        }
     }
-    for (let index = 0; index < grassEaterArr.length; index++) {
-        grassEaterArr[index].eat();
-    }
-    for (let index = 0; index < predatorArr.length; index++) {
-        predatorArr[index].eat();
-    }
-    for (let index = 0; index < flowerArr.length; index++) {
-        flowerArr[index].mul();
-    }
+    actionFromServer();
 
 }
+
+/*
+function mousePressed(){
+    var x = mouseX;
+    var y = mouseY;
+    var arr = [x,y];
+    socket.emit('Pressed', arr);
+}*/
+
+
+//serverum generacnel array-nery
+//script-um lsel weather u matrix
+//serveric socket-ov uxarkel weathern u matrix
